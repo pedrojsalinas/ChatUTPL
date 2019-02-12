@@ -1,0 +1,61 @@
+<mat-toolbar class="py-2 bg-turquesa text-white">
+  <mat-toolbar-row>
+    <span>Bienvenido, {{nombre}}</span>
+    <span class="expaciadorToolbar"></span>
+    <app-menu-dashboard-chats-docente></app-menu-dashboard-chats-docente>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<button mat-fab class="btn-agregarChat bg-naranja" (click)="actualizarSalaChat()">+</button>
+
+<section class="col-sm-12">
+  <section class="row d-flex justify-content-center">
+    <mat-card class="col-sm-4 mr-3">
+      <mat-card-header>
+        <mat-card-title>Nombre del Chat</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="example-form" #chatForm="ngForm" >
+          <mat-form-field class="example-full-width">
+            <input matInput #message maxlength="800" name="name" placeholder="Ingrese el nombre del chat" [(ngModel)]="chat.nombreChat">
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="col-sm-7 ml-3">
+      <mat-card-header class="d-flex">
+        <mat-card-title>Glosario</mat-card-title>
+        <button mat-icon-button (click)="modal()" class="ml-auto">
+          <mat-icon>library_add</mat-icon>
+        </button>
+      </mat-card-header>
+      <section class="col-sm-12">
+        <table class="table">
+          <thead>
+            <th>Titulo </th>
+            <th>Descripción</th>
+            <th>Operaciones</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let glosarioTermino of arrayGlosarioTermino ">
+              <td>{{ glosarioTermino.termino }} </td>
+              <td>{{ glosarioTermino.descripcion }} </td>
+              <td>
+                <a (click)="editGlosario(glosario)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deleteGlosario(glosario._id, glosarioForm)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+    </mat-card>
+  </section>
+</section>
+
+<br />
+<app-uploads> </app-uploads>

@@ -1,0 +1,14 @@
+<div class="container">
+  <h4>
+    {{title}}
+  </h4>
+
+  <mat-card>
+    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+    <button type="button" class="btn btn-success btn-s"
+          (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length">
+          Subir Archivos
+    </button>
+  </mat-card>
+</div>
